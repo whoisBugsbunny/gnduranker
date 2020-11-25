@@ -28,6 +28,24 @@ html {
     background-color: #222222;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.banner {
+    max-height: 510px;
+    overflow: hidden;
+}
+
+.banner-m-text {
+    color: #4285F4;
+    background: linear-gradient(to right, #4285F4, #8ab7ff);
+    background-clip: unset;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30vw;
+}
+
 .nav-link {
     text-decoration: none !important;
     color: #757575;
@@ -38,5 +56,5 @@ html {
 }
 
 .nav-clicked {
-    border-bottom: 2px solid salmon;
+    border-bottom: 2px solid #ff414d;
 }
