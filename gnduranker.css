@@ -1,0 +1,38 @@
+* {
+    margin-top: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body,
+html {
+    color: #757575;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+}
+
+.font1 {
+    font-family: 'Pacifico', cursive;
+}
+
+.font2 {
+    font-family: 'Righteous', cursive;
+}
+
+.nav-custom {
+    box-shadow: 0 0 2px rgb(102, 102, 102);
+    color: black;
+}
+
+.nav-link {
+    text-decoration: none !important;
+    color: #757575;
+}
+
+.nav-dec-none {
+    text-decoration: none !important;
+}
+
+.nav-clicked {
+    border-bottom: 2px solid salmon;
+}
