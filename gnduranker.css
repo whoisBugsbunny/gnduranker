@@ -101,6 +101,13 @@ html {
     border-bottom: 2px solid #ff414d;
 }
 
+.profile-icon {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 .footer-col {
     padding: 5px;
     cursor: default;
