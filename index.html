@@ -33,8 +33,8 @@
             <a class="navbar-brand nav-dec-none font2" href="#"><img style="width: 50px;" src="icon/r1logo1.png"></a>
             <!-- <a class="navbar-brand nav-dec-none text-dark" style="font-weight: bold;" href="#">GNDU<span style="color: #4285F4;">r</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a> -->
 
-            <button class="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler d-lg-none bg-black" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon dark"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -56,12 +56,18 @@
         </nav>
     </header>
     <div style="background-color: #4285F4;">
-        <div class="container" style="position: relative;">
+        <div class="container" style="position: relative;min-height: 200px;">
             <div class="banner-top">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <div class="exp-h py-4 text-center">
+                    <form class="form-inline my-2 my-lg-0">
+                        <div class="input-group exp-w">
+                            <input class="form-control search-box" id="address-bar" type="search" placeholder="Check my Rank" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn search-btn px-4" type="submit">GO</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <p class="font2 banner text-center banner-m-text">Rank</p>
 
@@ -71,9 +77,13 @@
 
     <div>hekkonljl</div>
     <footer>
-        <div class="bg-black mt-4 p-4">
+        <div class="bg-m-black mt-4 p-4">
             <div class="container text-light">
-                this is footer
+                <div class="row">
+                    <span class="footer-col px-4">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></span>
+                    <a class="nav-link px-4 text-light" href="#">devlopers</a>
+                    <a class="nav-link px-4 text-light" href="#">feedback</a>
+                </div>
             </div>
         </div>
     </footer>
