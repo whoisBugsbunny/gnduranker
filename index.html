@@ -37,7 +37,7 @@
                 <span class="navbar-toggler-icon dark"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link nav-clicked" href="#">Home</a>
                     </li>
@@ -52,15 +52,25 @@
                         </div>
                     </li>
                 </ul>
-                <a href="myprofile.html"><img class="profile-icon" src="images/circle-user-icon-blue.png"></a>
-
+                <!-- <a href="myprofile.html"><img class="profile-icon" src="images/circle-user-icon-blue.png"></a> -->
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="profile-icon" src="images/circle-user-icon-blue.png"></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="myprofile.html">my profile</a>
+                            <a class="dropdown-item" href="#">settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">logout</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <div style="background-color: #4285F4;">
-        <div class="container" style="position: relative;min-height: 200px;">
+        <div class="container-fluid" style="position: relative;min-height: 200px;">
             <div class="banner-top">
-                <div class="exp-h py-4 text-center">
+                <div class="container exp-h py-4 text-center">
                     <form class="form-inline my-2 my-lg-0">
                         <div class="input-group exp-w">
                             <input class="form-control search-box" id="address-bar" type="search" placeholder="Check my Rank" aria-label="Search">
