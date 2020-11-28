@@ -37,9 +37,26 @@ html {
     overflow: hidden;
 }
 
-.banner-m-text {
-    color: #4285F4;
+.bg-banner-b {
+    background-color: #4285F4;
+}
+
+.bg-banner-p {
+    background-color: #52057b;
+}
+
+.banner-m-text-b {
+    color: #8ab7ff;
     background: linear-gradient(to right, #4285F4, #8ab7ff);
+    background-clip: unset;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30vw;
+}
+
+.banner-m-text-p {
+    color: #892cdc;
+    background: linear-gradient(to right, #52057b, #892cdc);
     background-clip: unset;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -88,17 +105,26 @@ html {
     outline: auto;
 }
 
-.nav-link {
-    text-decoration: none !important;
-    color: #757575;
+.nav-item {
+    padding: 0 5px 0 5px;
 }
 
-.nav-dec-none {
+.nav-link {
+    color: #707070;
+    /* transition: all 0.2s linear; */
+}
+
+.nav-link:hover {
+    color: #ff414d;
+}
+
+.dec-none {
     text-decoration: none !important;
 }
 
 .nav-clicked {
     border-bottom: 2px solid #ff414d;
+    color: #ff414d;
 }
 
 .profile-icon {
@@ -111,7 +137,6 @@ html {
 .footer-col {
     padding: 5px;
     cursor: default;
-    transform-style: flat;
     transition: all 0.2s linear;
 }
 
