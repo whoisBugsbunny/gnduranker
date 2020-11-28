@@ -19,10 +19,7 @@ html {
     font-family: 'Righteous', cursive;
 }
 
-.nav-custom {
-    box-shadow: 0 0 2px rgb(102, 102, 102);
-    color: black;
-}
+.nav-custom {}
 
 .bg-black {
     background-color: black;
@@ -115,7 +112,7 @@ html {
 }
 
 .nav-link:hover {
-    color: #ff414d;
+    color: #222222;
 }
 
 .dec-none {
@@ -124,6 +121,10 @@ html {
 
 .nav-clicked {
     border-bottom: 2px solid #ff414d;
+    color: #ff414d;
+}
+
+.nav-clicked:hover {
     color: #ff414d;
 }
 
