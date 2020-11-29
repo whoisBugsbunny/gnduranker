@@ -17,6 +17,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
         // window.open("gnduranker.html", "_self");
+        document.getElementById('login').classList.add('d-none');
         var y = document.getElementsByName("loginele");
         var x = document.getElementsByName("nologele");
         for (i = 0; i < y.length; i++) {
