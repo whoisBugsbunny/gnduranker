@@ -6,7 +6,6 @@
 
 body,
 html {
-    color: #757575;
     font-family: Roboto, sans-serif;
     font-size: 16px;
 }
@@ -144,4 +143,32 @@ html {
 
 .footer-col:hover {
     filter: drop-shadow(0px 0px 10px white);
+}
+
+.f-load {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.f-load-img {
+    max-width: 100px;
+    opacity: 0.8;
+    animation: circular 1s linear infinite;
+    margin-top: 15vw;
+}
+
+@keyframes circular {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media(max-width:610px) {
+    .f-load-img {
+        margin-top: 90px;
+    }
 }

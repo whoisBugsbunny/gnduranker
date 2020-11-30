@@ -1,6 +1,6 @@
 .login-box-back {
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     background-color: rgba(0, 0, 0, 0.5);
     animation: fade-in 0.5s;
 }

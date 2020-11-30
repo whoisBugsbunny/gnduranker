@@ -39,6 +39,15 @@
 </head>
 
 <body>
+    <!-- loading full screen  -->
+
+    <!-- <div id="loading" class="f-load exp-h exp-w">
+        <div class="container m-auto p-4 text-center">
+            <div class="display-4">
+                <img class="f-load-img" src="images/loading.png">
+            </div>Loading
+        </div>
+    </div> -->
     <div id="login" class="exp-h exp-w login-box-back d-none">
         <div class="container exp-h mt-4">
             <div class="cross-btn-bg py-4 my-4">
@@ -66,6 +75,21 @@
                     <button type="submit" class="btn mb-2 px-3 sl-btn-social"><img class="sl-btn-logo" src="icon/PinClipart-google.png"> Google</button>
                     <button type="submit" class="btn mb-2 px-3 sl-btn-social"><img class="sl-btn-logo" src="icon/PinClipart-facebook.png"> facebook</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="greeting" class="exp-h exp-w login-box-back text-center ">
+        <div class="container exp-h mt-4">
+            <div class="cross-btn-bg py-4 my-4">
+                <button type="button" class="cross-btn" aria-label="Close" onclick="document.getElementById('greeting').classList.add('d-none')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="login-box exp-h bg-light m-auto py-3 px-4">
+                <h1 id="gr_msg" class="display-4">Welcome</h1>
+                <p class="lead">
+                    hello, <span id="user_name"></span>
+                </p>
             </div>
         </div>
     </div>
@@ -97,11 +121,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="profile-icon" src="images/circle-user-icon-blue.png"></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownId">
-                            <a name="nologele" class="dropdown-item" style="cursor: pointer;" onclick="document.getElementById('login').classList.remove('d-none')">login</a>
-                            <a name="loginele" class="dropdown-item" href="myprofile.html">my profile</a>
-                            <a name="loginele" class="dropdown-item" href="#">settings</a>
-                            <div name="loginele" class="dropdown-divider"></div>
-                            <a name="loginele" class="dropdown-item" href="#" onclick="logout()">logout</a>
+                            <a name="nologele" class="dropdown-item d-none" style="cursor: pointer;" onclick="document.getElementById('login').classList.remove('d-none')">login</a>
+                            <a name="loginele" class="dropdown-item d-none" href="myprofile.html">my profile</a>
+                            <a name="loginele" class="dropdown-item d-none" href="#">settings</a>
+                            <div name="loginele" class="dropdown-divider d-none"></div>
+                            <a name="loginele" class="dropdown-item d-none" href="#" onclick="logout()">logout</a>
+                            <p name="loading" style="cursor: default;" class="m-0 px-4 py-1">loading...</p>
                         </div>
                     </li>
                 </ul>

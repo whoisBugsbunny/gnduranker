@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -19,16 +29,62 @@
 
     <!-- custom css and js -->
     <link rel="stylesheet" href="gnduranker.css">
-    <script src="gnduranker.js"></script>
+    <link rel="stylesheet" href="login.css">
+    <script src="profile.js"></script>
 
     <!-- browser icon -->
-    <link rel="icon" href="icon/r1logo1neg.png">
+    <link rel="icon" href="icon/r1logo2tneg.png">
 
-    <title>my Profile</title>
+    <title>my profile</title>
 </head>
 
 <body>
+    <header class="nav-custom bg-banner-p">
+        <nav class="navbar navbar-expand-md ml-4 mr-4 navbar-dark" style="background-color: #00000000;">
+            <a class="navbar-brand dec-none font2" href="#"><img style="width: 50px;" src="icon/r1logo2tneg.png"></a>
+            <!-- <a class="navbar-brand nav-dec-none text-dark" style="font-weight: bold;" href="#">GNDU<span style="color: #4285F4;">r</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a> -->
 
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link nav-clicked" href="#">My profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">about</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">rank</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">college</a>
+                            <a class="dropdown-item" href="#">univercity</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="d-none d-md-block"><img class="profile-icon" src="images/circle-user-icon-blue.png"></div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+    <footer>
+        <div class="bg-m-black mt-4 p-4">
+            <div class="container text-light">
+                <div class="row">
+                    <span class="footer-col px-4">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></span>
+                    <a class="nav-link px-4 text-light" href="#">devlopers</a>
+                    <a class="nav-link px-4 text-light" href="#">feedback</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

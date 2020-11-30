@@ -16,8 +16,16 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        // window.open("gnduranker.html", "_self");
-        document.getElementById('login').classList.add('d-none');
+        var user = firebase.auth().currentUser;
+
+        if (user != null) {
+            // var id_name = user.displayName;
+            var email_id = user.email;
+            var name = email_id.substring(0, email_id.lastIndexOf("@"));
+            // document.getElementById("user_name").innerHTML = "hi there : " + id_name;
+            document.getElementById("user_name").innerHTML = name;
+        }
+
         var y = document.getElementsByName("loginele");
         var x = document.getElementsByName("nologele");
         for (i = 0; i < y.length; i++) {
@@ -26,6 +34,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         for (i = 0; i < x.length; i++) {
             x[i].classList.add('d-none');
         }
+        document.getElementById('login').classList.add('d-none');
     } else {
         // No user is signed in.
         document.getElementById('login').classList.remove('d-none');
@@ -40,7 +49,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
 
     }
+    var z = document.getElementsByName("loading");
+    for (i = 0; i < z.length; i++) {
+        z[i].classList.add('d-none');
+    }
 });
+
+function sleep(ms) {
+    return new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
+}
 
 function login() {
     var userEmail = document.getElementById("email").value;
@@ -54,6 +73,8 @@ function login() {
         // ...
         window.alert(errorMessage);
     });
+    document.getElementById('greeting').classList.remove('d-none');
+    document.getElementById('gr_msg').innerHTML = "Welcome back";
 }
 
 function signup() {
@@ -67,6 +88,7 @@ function signup() {
         // ...
         window.alert("error occur : " + errorMessage);
     });
+    document.getElementById('greeting').classList.remove('d-none');
 }
 
 function verification() {
