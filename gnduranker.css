@@ -28,6 +28,23 @@ html {
     background-color: #222222;
 }
 
+.pop-up {
+    display: flex;
+    min-height: 90vh;
+    height: 100px;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    max-width: 800px;
+}
+
+.pop-up-bg {
+    background-color: #fcfcfc;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #2222227e;
+}
+
 .banner {
     max-height: 510px;
     overflow: hidden;
@@ -135,6 +152,10 @@ html {
     /* border: 2px solid white; */
 }
 
+.w-wrap {
+    word-wrap: break-word;
+}
+
 .footer-col {
     padding: 5px;
     cursor: default;
@@ -170,5 +191,20 @@ html {
 @media(max-width:610px) {
     .f-load-img {
         margin-top: 90px;
+    }
+}
+
+
+/* profile page css */
+
+.profile-pic {
+    object-fit: cover;
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+@media(max-width:575px) {
+    .profile-pic {
+        max-width: 200px;
     }
 }

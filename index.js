@@ -66,6 +66,8 @@ function login() {
     var userPass = document.getElementById("password").value;
     firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(user => {
         // Sign in success
+        document.getElementById('greeting').classList.remove('d-none');
+        document.getElementById('gr_msg').innerHTML = "Welcome back";
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -73,33 +75,44 @@ function login() {
         // ...
         window.alert(errorMessage);
     });
-    document.getElementById('greeting').classList.remove('d-none');
-    document.getElementById('gr_msg').innerHTML = "Welcome back";
 }
 
 function signup() {
     // var userName = document.getElementById("name").value;
     var userEmail = document.getElementById("email").value;
     var userPass = document.getElementById("password").value;
-    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(user => {
+        // Sign up success
+        var user = firebase.auth().currentUser;
+        user.displayName = user.email.substring(0, user.email.lastIndexOf("@"));
+
+        document.getElementById('greeting').classList.remove('d-none');
+    }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
         window.alert("error occur : " + errorMessage);
     });
-    document.getElementById('greeting').classList.remove('d-none');
 }
 
-function verification() {
-    var user = firebase.auth().currentUser;
-
-    user.sendEmailVerification().then(function() {
-        // Email sent.
-        window.alert("verification email is sent");
+function googleSignup() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
     }).catch(function(error) {
-        // An error happened.
-        window.alert("error : " + error.message);
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
     });
 }
 

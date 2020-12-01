@@ -20,19 +20,20 @@
 
           if (user != null) {
 
-              // var id_name = user.displayName;
+              var id_name = user.displayName;
               var email_id = user.email;
               var email_verified = user.emailVerified;
-              var email_verified_val = "";
 
               if (email_verified) {
-                  email_verified_val = "account is varified";
-                  document.getElementById("verification").style.display = "none";
+                  document.getElementById("verified").style.display = "inline";
+                  document.getElementById("verify_btn").style.display = "none";
               } else {
-                  email_verified_val = "account is not varified";
+                  document.getElementById("verified").style.display = "none";
               }
               // document.getElementById("user_name").innerHTML = "hi there : " + id_name;
+              document.getElementById("user_name").innerHTML = "hi " + id_name;
               document.getElementById("user_email").innerHTML = email_id;
+              document.getElementById("pop_user_email").innerHTML = email_id;
 
           }
       } else {
@@ -46,7 +47,7 @@
 
       user.sendEmailVerification().then(function() {
           // Email sent.
-          window.alert("verification email is sent");
+          document.getElementById('verify').classList.remove('d-none');
       }).catch(function(error) {
           // An error happened.
           window.alert("error : " + error.message);

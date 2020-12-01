@@ -29,7 +29,7 @@
 
     <!-- custom css and js -->
     <link rel="stylesheet" href="gnduranker.css">
-    <link rel="stylesheet" href="login.css">
+    <!-- <link rel="stylesheet" href="login.css"> -->
     <script src="profile.js"></script>
 
     <!-- browser icon -->
@@ -39,6 +39,15 @@
 </head>
 
 <body>
+    <div id="verify" class="f-load exp-h exp-w ">
+        <div class="m-auto p-4 text-center pop-up">
+            <div class="pop-up-bg p-3">
+                <h1 class="">verification email is sent</h1>
+                <p class="lead w-wrap" id="pop_user_email">user email</p>
+                <button class="btn btn-outline-dark px-4" onclick="document.getElementById('verify').classList.add('d-none');">OK</button>
+            </div>
+        </div>
+    </div>
     <header class="nav-custom bg-banner-p">
         <nav class="navbar navbar-expand-md ml-4 mr-4 navbar-dark" style="background-color: #00000000;">
             <a class="navbar-brand dec-none font2" href="#"><img style="width: 50px;" src="icon/r1logo2tneg.png"></a>
@@ -71,8 +80,29 @@
         </nav>
     </header>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 p-2 font2">
+                <div class="text-center">
+                    <img id="profile_pic" class="profile-pic mx-auto" src="images/circle-user-icon-blue.png">
+                </div>
+                <div class="p-2">
+                    <p id="user_name" class="lead">user name</p>
+                    <p class="lead w-wrap"><span id="user_email">user email</span><span id=""><img id="verified" width="20" src="images/Checkmark.png"></span></p>
+                    <button id="verify_btn" class="btn btn-outline-success" onclick="verification()">verify my email</button>
+                    <p id="user_about" class="lead">user about</p>
+                    <button class="btn btn-outline-dark" onclick="logout()">logout</button>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6">
+                <div class="">
+                    <h1 class="text-center exp-w">Achievement</h1>
+                </div>
+                <div class="input-box">aaa</div>
 
-
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="bg-m-black mt-4 p-4">
