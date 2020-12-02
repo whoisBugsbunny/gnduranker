@@ -28,6 +28,14 @@ html {
     background-color: #222222;
 }
 
+.nav-groups-container[_ngcontent-bcy-c2]::-webkit-scrollbar {
+    background-color: var(--fire-color-sidenav-scrollbar);
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 8px;
+    /* background-color: #000000; */
+}
+
 .pop-up {
     display: flex;
     min-height: 90vh;
@@ -155,6 +163,17 @@ html {
 .w-wrap {
     word-wrap: break-word;
 }
+
+
+/* table */
+
+.cus-table {
+    display: table;
+    box-shadow: 0 0 5px rgb(100, 100, 100);
+}
+
+
+/* footer */
 
 .footer-col {
     padding: 5px;

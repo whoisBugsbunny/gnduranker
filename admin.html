@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- custom css and js -->
+    <link rel="stylesheet" href="gnduranker.css">
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDswRp2CSZXfjjro-by_4ohqfYDw5mn54M",
+            authDomain: "ranker-704af.firebaseapp.com",
+            databaseURL: "https://ranker-704af.firebaseio.com",
+            projectId: "ranker-704af",
+            storageBucket: "ranker-704af.appspot.com",
+            messagingSenderId: "486622039229",
+            appId: "1:486622039229:web:c7a398e1e64207d994fbd4",
+            measurementId: "G-0Y2FJ4SPKK"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="admin.js"></script>
+
+    <!-- browser icon -->
+    <link rel="icon" href="icon/r1logo2tneg.png">
+
+    <title>admin</title>
+</head>
+
+<body>
+    <div class="m-auto p-4 pop-up">
+        <div class="pop-up-bg p-3">
+            <p>Name
+                <input class="exp-w" type="text" name="student" id="std_name" required></p>
+            <p>Roll number
+                <input class="exp-w" type="number" name="rollno" id="roll_num" required></p>
+            <p>Marks
+                <input class="exp-w" type="number" name="marks" id="t_marks" required></p>
+            <br>
+            <button class="btn btn-outline-dark exp-w mb-3" type="submit" id="saveBtn" onclick="save()">Add</button>
+
+            <button class="btn btn-outline-success exp-w mb-3" type="submit" id="uploadBtn" onclick="upload()">Uplaod</button>
+
+            <button class="btn btn-outline-primary exp-w" type="submit" id="testBtn" onclick="testadd()">testAdd</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -14,6 +14,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script> -->
 
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -31,6 +32,7 @@
     <link rel="stylesheet" href="gnduranker.css">
     <link rel="stylesheet" href="login.css">
     <script src="index.js"></script>
+    <script src="admin.js"></script>
 
     <!-- browser icon -->
     <link rel="icon" href="icon/r1logo2tneg.png">
@@ -38,7 +40,7 @@
     <title>Gndu Ranker</title>
 </head>
 
-<body>
+<body _ngcontent-bcy-c2 class="nav-groups-container">
     <!-- loading full screen  -->
 
     <!-- <div id="loading" class="f-load exp-h exp-w">
@@ -151,9 +153,51 @@
 
         </div>
     </div>
-    <a class="navbar-brand nav-dec-none font2" href="#">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a>
+    <div class="text-center">
+        <a class="navbar-brand nav-dec-none font2" href="#">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a>
+    </div>
 
-    <div>hekkonljl</div>
+    <!-- table -->
+
+    <div class="container">
+        <table class="table table-striped table-inverse table-responsive cus-table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Pos.</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">#1</td>
+                    <td id="fstName"></td>
+                    <td id="fstRoll"></td>
+                    <td id="fstMarks"></td>
+                </tr>
+                <tr>
+                    <td scope="row">#2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td scope="row">#3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- if auto load not work -->
+        <!-- <button onclick="load()" type="submit">load</button> -->
+        <button class="btn btn-outline-primary exp-w" onclick="fload()" type="submit">fullLoad</button>
+    </div>
+
+
+    <!-- footer -->
+
     <footer>
         <div class="bg-m-black mt-4 p-4">
             <div class="container text-light">
