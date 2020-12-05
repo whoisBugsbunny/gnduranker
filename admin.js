@@ -17,6 +17,7 @@
  var id = null;
  const docRef = firestore.doc("sample/tempResults");
  const myCounter = firestore.doc("counter/count");
+ const score = firestore.collection("scores");
 
  function save() {
      const name = document.getElementById("std_name").value;
@@ -56,12 +57,15 @@
  //      });
  //  }
  function fload() {
-     firestore.collection("scores").where("marks", "==", true)
+     firestore.collection("scores").where("marks", "==", "706")
          .get()
          .then(function(querySnapshot) {
              querySnapshot.forEach(function(doc) {
                  // doc.data() is never undefined for query doc snapshots
+                 var mydata = doc.data();
                  console.log(doc.id, " => ", doc.data());
+                 $('#table_body').append("<tr> <td scope = \"row\" > #" + "pos" + "</td><td>" + mydata.name +
+                     "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
              });
          })
          .catch(function(error) {
@@ -71,26 +75,35 @@
  }
 
  getRealtimeUpdates = function() {
-     docRef.onSnapshot(function(doc) {
-         if (doc.exists) {
-             const name1 = document.getElementById("fstName");
-             const roll = document.getElementById("fstRoll");
-             const marks = document.getElementById("fstMarks");
-             const mydata = doc.data();
-             //  console.log("Document data r:", doc.data());
-             name1.innerHTML = mydata.name;
-             roll.innerHTML = mydata.rollNo;
-             marks.innerHTML = mydata.marks;
-         }
+     var pos = 0;
+     score.onSnapshot(function() {
+         score.where("marks", "==", "706").orderBy("name")
+             .get()
+             .then(function(querySnapshot) {
+                 querySnapshot.forEach(function(doc) {
+                     pos += 1;
+                     var mydata = doc.data();
+                     console.log(doc.id, " => ", doc.data());
+                     $('#table_body').append("<tr> <td scope = \"row\" > #" + pos + "</td><td>" + mydata.name +
+                         "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
+                 });
+             })
+             .catch(function(error) {
+                 console.log("got an Error : ", error);
+             });
      })
+
      myCounter.onSnapshot(function(doc) {
+
          if (doc.exists) {
+
              const mydata = doc.data();
              id = mydata.current;
              console.log("counter: ", doc.data());
          }
      })
  }
+
  if (window.location.pathname == '/') {
      getRealtimeUpdates();
  }
@@ -100,7 +113,7 @@
      var docRef1 = firestore.collection("scores").doc(String(id)); // main results folder or collection
 
      const name = document.getElementById("std_name").value;
-     var roll = parseInt(document.getElementById("roll_num").value);
+     const roll = document.getElementById("roll_num").value;
      const marks = document.getElementById("t_marks").value;
      docRef1.set({
          name: name,

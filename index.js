@@ -103,6 +103,8 @@ function googleSignup() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        console.log("token: " + token);
+        console.log("user: " + user);
         // ...
     }).catch(function(error) {
         // Handle Errors here.
@@ -112,6 +114,7 @@ function googleSignup() {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
+        console.log("error: " + errorMessage);
         // ...
     });
 }
