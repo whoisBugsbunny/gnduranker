@@ -57,23 +57,7 @@
  //          console.log("Error getting document:", error);
  //      });
  //  }
- function fload() {
-     firestore.collection("scores").where("marks", "==", "706")
-         .get()
-         .then(function(querySnapshot) {
-             querySnapshot.forEach(function(doc) {
-                 // doc.data() is never undefined for query doc snapshots
-                 var mydata = doc.data();
-                 console.log(doc.id, " => ", doc.data());
-                 $('#table_body').append("<tr> <td scope = \"row\" > #" + "pos" + "</td><td>" + mydata.name +
-                     "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
-             });
-         })
-         .catch(function(error) {
-             console.log("Error getting documents: ", error);
-         });
 
- }
 
  getRealtimeUpdates = function() {
      myCounter.onSnapshot(function(doc) {

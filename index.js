@@ -132,14 +132,15 @@ function facebookSignup() {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        console.log("error: " + errorMessage)
-            // ...
+        // ...
     });
 }
 
 function logout() {
     firebase.auth().signOut();
 }
+
+// main data table printing and searching
 
 var firestore = firebase.firestore();
 const score = firestore.collection("scores");
@@ -171,10 +172,12 @@ function search_me() {
     const marks = document.getElementById("usmarks");
     const searchVal = document.getElementById("searchMe-bar").value.trim();
     document.getElementById("search-bar").classList.remove('search-box-h');
+    document.getElementById("sResult").classList.add("d-none");
     if (searchVal != null && searchVal != '') {
-        score.where("name", "==", "secon")
+        score.where("name", "==", String(searchVal))
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
+                    document.getElementById("sResult").classList.remove("d-none");
                     console.log(doc.id, " => ", doc.data());
                     const mydata = doc.data();
                     name.innerHTML = mydata.name;
@@ -184,7 +187,6 @@ function search_me() {
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });
-        document.getElementById("sResult").classList.remove("d-none");
     } else {
         document.getElementById("search-bar").classList.add('search-box-h');
     }
