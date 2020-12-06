@@ -1,18 +1,19 @@
  // Your web app's Firebase configuration
  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
- //  var firebaseConfig = {
- //      apiKey: "AIzaSyDswRp2CSZXfjjro-by_4ohqfYDw5mn54M",
- //      authDomain: "ranker-704af.firebaseapp.com",
- //      databaseURL: "https://ranker-704af.firebaseio.com",
- //      projectId: "ranker-704af",
- //      storageBucket: "ranker-704af.appspot.com",
- //      messagingSenderId: "486622039229",
- //      appId: "1:486622039229:web:c7a398e1e64207d994fbd4",
- //      measurementId: "G-0Y2FJ4SPKK"
- //  };
+ var firebaseConfig = {
+     apiKey: "AIzaSyDswRp2CSZXfjjro-by_4ohqfYDw5mn54M",
+     authDomain: "ranker-704af.firebaseapp.com",
+     databaseURL: "https://ranker-704af.firebaseio.com",
+     projectId: "ranker-704af",
+     storageBucket: "ranker-704af.appspot.com",
+     messagingSenderId: "486622039229",
+     appId: "1:486622039229:web:c7a398e1e64207d994fbd4",
+     measurementId: "G-0Y2FJ4SPKK"
+ };
  // Initialize Firebase
- //  firebase.initializeApp(firebaseConfig);
+ firebase.initializeApp(firebaseConfig);
  //   firebase.analytics();
+
  var firestore = firebase.firestore();
  var id = null;
  const docRef = firestore.doc("sample/tempResults");
@@ -75,24 +76,6 @@
  }
 
  getRealtimeUpdates = function() {
-     var pos = 0;
-     score.onSnapshot(function() {
-         score.where("marks", "==", "706").orderBy("name")
-             .get()
-             .then(function(querySnapshot) {
-                 querySnapshot.forEach(function(doc) {
-                     pos += 1;
-                     var mydata = doc.data();
-                     console.log(doc.id, " => ", doc.data());
-                     $('#table_body').append("<tr> <td scope = \"row\" > #" + pos + "</td><td>" + mydata.name +
-                         "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
-                 });
-             })
-             .catch(function(error) {
-                 console.log("got an Error : ", error);
-             });
-     })
-
      myCounter.onSnapshot(function(doc) {
 
          if (doc.exists) {
@@ -104,9 +87,7 @@
      })
  }
 
- if (window.location.pathname == '/' || window.location.pathname == "/index.html") {
-     getRealtimeUpdates();
- }
+ getRealtimeUpdates();
 
  function upload() {
      id += 1;

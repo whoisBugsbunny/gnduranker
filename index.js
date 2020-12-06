@@ -140,3 +140,52 @@ function facebookSignup() {
 function logout() {
     firebase.auth().signOut();
 }
+
+var firestore = firebase.firestore();
+const score = firestore.collection("scores");
+
+getRealtimeUpdates = function() {
+    var pos = 0;
+    score.onSnapshot(function() {
+        score.orderBy("marks", "desc").limit(10)
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    pos += 1;
+                    var mydata = doc.data();
+                    // console.log(doc.id, " => ", doc.data());
+                    $('#table_body').append("<tr> <td scope = \"row\" > #" + pos + "</td><td>" + mydata.name +
+                        "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
+                });
+            })
+            .catch(function(error) {
+                console.log("got an Error : ", error);
+            });
+    })
+}
+getRealtimeUpdates();
+
+function search_me() {
+    const name = document.getElementById("usname");
+    const roll = document.getElementById("usroll");
+    const marks = document.getElementById("usmarks");
+    const searchVal = document.getElementById("searchMe-bar").value.trim();
+    document.getElementById("search-bar").classList.remove('search-box-h');
+    if (searchVal != null && searchVal != '') {
+        score.where("name", "==", "secon")
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    const mydata = doc.data();
+                    name.innerHTML = mydata.name;
+                    roll.innerHTML = mydata.rollNo;
+                    marks.innerHTML = mydata.marks;
+                });
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        document.getElementById("sResult").classList.remove("d-none");
+    } else {
+        document.getElementById("search-bar").classList.add('search-box-h');
+    }
+}

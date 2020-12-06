@@ -29,9 +29,9 @@ html {
 }
 
 .nav-groups-container[_ngcontent-bcy-c2]::-webkit-scrollbar {
-    background-color: var(--fire-color-sidenav-scrollbar);
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* background-color: var(--fire-color-sidenav-scrollbar); */
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
     width: 8px;
     /* background-color: #000000; */
 }
@@ -107,6 +107,12 @@ html {
 
 .search-box {
     border-radius: 5px 0px 0px 5px;
+}
+
+.search-box-h {
+    border: 2px solid red;
+    box-shadow: 0 0 5px red;
+    border-radius: 7px;
 }
 
 .search-btn {
