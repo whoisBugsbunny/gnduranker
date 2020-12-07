@@ -67,29 +67,38 @@
 }
 
 .sl-btn {
+    top: 0;
     width: 100px;
+    height: 40px;
     color: white;
     transform-style: flat;
     transition: all 0.2s linear;
     border-radius: 50px;
 }
 
+.sl-btn:hover {
+    position: relative;
+    /* top: -2px; */
+    /* margin-bottom: 10px !important; */
+}
+
 .sign-btn {
-    background-color: #ff414d;
+    background-color: #e4313d;
 }
 
 .sign-btn:hover {
-    background-color: #e4313d;
-    width: 200px;
+    background-color: #ff414d;
+    box-shadow: 0 0 5px #ff414d;
 }
 
 .log-btn {
-    background-color: #892cdc;
+    background-color: #52057b;
 }
 
 .log-btn:hover {
-    background-color: #52057b;
-    width: 200px;
+    background-color: #892cdc;
+    box-shadow: 0 0 5px #892cdc;
+    /* width: 200px; */
 }
 
 .sl-btn-social {

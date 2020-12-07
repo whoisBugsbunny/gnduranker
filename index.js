@@ -143,20 +143,20 @@ function logout() {
 // main data table printing and searching
 
 var firestore = firebase.firestore();
-const score = firestore.collection("scores");
+const bca2020 = firestore.collection("GNDU").doc("BCA").collection("2020");
 
 getRealtimeUpdates = function() {
     var pos = 0;
-    score.onSnapshot(function() {
-        score.orderBy("marks", "desc").limit(10)
+    bca2020.onSnapshot(function() {
+        bca2020.orderBy("Position").limit(10)
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     pos += 1;
                     var mydata = doc.data();
                     // console.log(doc.id, " => ", doc.data());
-                    $('#table_body').append("<tr> <td scope = \"row\" > #" + pos + "</td><td>" + mydata.name +
-                        "</td><td>" + mydata.rollNo + "</td><td>" + mydata.marks + "</td></tr>");
+                    $('#table_body').append("<tr> <td scope = \"row\" > #" + mydata.Position + "</td><td>" + mydata.Name +
+                        "</td><td>" + mydata.RollNo + "</td><td>" + mydata.Result + "</td></tr>");
                 });
             })
             .catch(function(error) {
@@ -170,19 +170,21 @@ function search_me() {
     const name = document.getElementById("usname");
     const roll = document.getElementById("usroll");
     const marks = document.getElementById("usmarks");
-    const searchVal = document.getElementById("searchMe-bar").value.trim();
+    const rank = document.getElementById("myrank");
+    const searchVal = document.getElementById("searchMe-bar").value.trim().toUpperCase();
     document.getElementById("search-bar").classList.remove('search-box-h');
     document.getElementById("sResult").classList.add("d-none");
     if (searchVal != null && searchVal != '') {
-        score.where("name", "==", String(searchVal))
+        bca2020.where("Name", "==", searchVal)
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     document.getElementById("sResult").classList.remove("d-none");
                     console.log(doc.id, " => ", doc.data());
-                    const mydata = doc.data();
-                    name.innerHTML = mydata.name;
-                    roll.innerHTML = mydata.rollNo;
-                    marks.innerHTML = mydata.marks;
+                    var mydata = doc.data();
+                    rank.innerHTML = "#" + mydata.Position;
+                    name.innerHTML = mydata.Name;
+                    roll.innerHTML = mydata.RollNo;
+                    marks.innerHTML = mydata.Result;
                 });
             }).catch(function(error) {
                 console.log("Error getting document:", error);

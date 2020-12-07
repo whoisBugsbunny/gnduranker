@@ -68,8 +68,8 @@
                     <input class="py-2 exp-w input-box" placeholder="enter password" id="password" type="password">
                 </div>
                 <div class="mb-2 text-center">
-                    <button class="btn mb-2 sl-btn sign-btn" id="signup" onclick="signup()" type="submit">sign up</button>
-                    <button class="btn mb-2 sl-btn log-btn" id="login" onclick="login()" type="submit">log in</button>
+                    <button class="btn mb-2 sl-btn log-btn" id="login" onclick="login()" type="submit">Log in</button>
+                    <button class="btn mb-2 sl-btn sign-btn" id="signup" onclick="signup()" type="submit">Sign up</button>
                 </div>
                 <hr class="mb-1">
                 <p class="text-center" style="margin: 0; font-size: small;top: -14px;position: relative;">OR</p>
@@ -138,7 +138,7 @@
                 <div class="container exp-h py-4 text-center">
                     <div class="form-inline my-2 my-lg-0">
                         <div id="search-bar" class="input-group exp-w">
-                            <input class="form-control search-box" id="searchMe-bar" type="search" placeholder="Check my Rank" aria-label="Search">
+                            <input class="form-control search-box" id="searchMe-bar" type="search" placeholder="Check my Rank name" aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn search-btn px-4" onclick="search_me()" type="submit">GO</button>
                             </div>
@@ -149,7 +149,7 @@
                         <table class="table table-striped table-inverse bg-light d-table">
 
                             <thead class="thead-inverse">
-                                <tr>#rank</tr>
+                                <p id="myrank" class="text-light lead">#rank</p>
                                 <tr>
                                     <th>Name</th>
                                     <th>Roll No</th>
