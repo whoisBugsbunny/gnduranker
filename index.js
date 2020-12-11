@@ -19,10 +19,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         var user = firebase.auth().currentUser;
 
         if (user != null) {
-            // var id_name = user.displayName;
             var email_id = user.email;
             var name = email_id.substring(0, email_id.lastIndexOf("@"));
-            // document.getElementById("user_name").innerHTML = "hi there : " + id_name;
             document.getElementById("user_name").innerHTML = name;
         }
 
@@ -148,7 +146,7 @@ const bca2020 = firestore.collection("GNDU").doc("BCA").collection("2020");
 getRealtimeUpdates = function() {
     var pos = 0;
     bca2020.onSnapshot(function() {
-        bca2020.orderBy("Position").limit(10)
+        bca2020.where("Position", "<", 11)
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
@@ -171,11 +169,11 @@ function search_me() {
     const roll = document.getElementById("usroll");
     const marks = document.getElementById("usmarks");
     const rank = document.getElementById("myrank");
-    const searchVal = document.getElementById("searchMe-bar").value.trim().toUpperCase();
+    const searchVal = parseInt(document.getElementById("searchMe-bar").value.trim());
     document.getElementById("search-bar").classList.remove('search-box-h');
     document.getElementById("sResult").classList.add("d-none");
     if (searchVal != null && searchVal != '') {
-        bca2020.where("Name", "==", searchVal)
+        bca2020.where("RollNo", "==", searchVal)
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     document.getElementById("sResult").classList.remove("d-none");

@@ -15,178 +15,39 @@
  //   firebase.analytics();
 
  var firestore = firebase.firestore();
- var id = null;
- const docRef = firestore.doc("sample/tempResults");
- const myCounter = firestore.doc("counter/count");
- const score = firestore.collection("scores");
 
- function save() {
-     const name = document.getElementById("std_name").value;
-     const roll = document.getElementById("roll_num").value;
-     const marks = document.getElementById("t_marks").value;
-     docRef.set({
-         name: name,
-         rollNo: roll,
-         marks: marks
-     }).then(function() {
-         console.log("saved");
-     }).catch(function(error) {
-         console.log("got an error: ", error);
-     });
- }
-
- //  in-case realtimeupdate not works
-
- //  function load() {
- //      const name = document.getElementById("fstName");
- //      const roll = document.getElementById("fstRoll");
- //      const marks = document.getElementById("fstMarks");
-
- //      docRef.get().then(function(doc) {
- //          if (doc.exists) {
- //              const mydata = doc.data();
- //              console.log("Document data:", doc.data());
- //              name.innerHTML = mydata.name;
- //              roll.innerHTML = mydata.rollNo;
- //              marks.innerHTML = mydata.marks;
- //          } else {
- //              // doc.data() will be undefined in this case
- //              console.log("No such document!");
- //          }
- //      }).catch(function(error) {
- //          console.log("Error getting document:", error);
- //      });
- //  }
-
-
- getRealtimeUpdates = function() {
-     myCounter.onSnapshot(function(doc) {
-
-         if (doc.exists) {
-
-             const mydata = doc.data();
-             id = mydata.current;
-             console.log("counter: ", doc.data());
-         }
-     })
- }
-
- getRealtimeUpdates();
-
- function upload() {
-     id += 1;
-     var docRef1 = firestore.collection("scores").doc(String(id)); // main results folder or collection
-
-     const name = document.getElementById("std_name").value;
-     const roll = document.getElementById("roll_num").value;
-     const marks = document.getElementById("t_marks").value;
-     docRef1.set({
-         name: name,
-         rollNo: roll,
-         marks: marks
-     }).then(function() {
-         myCounter.set({
-             current: id
-         })
-         console.log("saved");
-     }).catch(function(error) {
-         console.log("got an error: ", error);
-     });
-
- }
-
- function testadd() {
-     var citiesRef = firestore.collection("cities");
-
-     citiesRef.doc("SF").set({
-         name: "San Francisco",
-         state: "CA",
-         country: "USA",
-         capital: false,
-         population: 860000,
-         regions: ["west_coast", "norcal"]
-     });
-     citiesRef.doc("LA").set({
-         name: "Los Angeles",
-         state: "CA",
-         country: "USA",
-         capital: false,
-         population: 3900000,
-         regions: ["west_coast", "socal"]
-     });
-     citiesRef.doc("DC").set({
-         name: "Washington, D.C.",
-         state: null,
-         country: "USA",
-         capital: true,
-         population: 680000,
-         regions: ["east_coast"]
-     });
-     citiesRef.doc("TOK").set({
-         name: "Tokyo",
-         state: null,
-         country: "Japan",
-         capital: true,
-         population: 9000000,
-         regions: ["kanto", "honshu"]
-     });
-     citiesRef.doc("BJ").set({
-         name: "Beijing",
-         state: null,
-         country: "China",
-         capital: true,
-         population: 21500000,
-         regions: ["jingjinji", "hebei"]
-     });
- }
-
- function bulktest() {
-     var menu = [{
-             //  "id": 1,
-             "name": "Focaccia al rosmarino",
-             "description": "Wood fired rosemary and garlic focaccia",
-             "price": 8.50,
-             "type": "Appetizers"
+ function addData() {
+     const collectPath = document.getElementById("collect_path").value.trim();
+     const docFile = document.getElementById("doc_file").value;
+     const collect = firestore.collection(String(collectPath));
+     var results = [{
+             "Roll_No": 10721604472,
+             "Candidate_Name": "ABHISHEK GILL",
+             "Result": "RL(Lower)",
+             "Position": "NA"
          },
          {
-             //  "id": 2,
-             "name": "Burratta con speck",
-             "description": "Burratta cheese, imported smoked prok belly prosciutto, pached balsamic pear",
-             "price": 13.50,
-             "type": "Appetizers"
-         },
-         {
-             //  "id": 3,
-             "name": "Focaccia al rosmarino",
-             "description": "Wood fired rosemary and garlic focaccia",
-             "price": 8.50,
-             "type": "Appetizers"
-         },
-         {
-             //  "id": 4,
-             "name": "Burratta con speck",
-             "description": "Burratta cheese, imported smoked prok belly prosciutto, pached balsamic pear",
-             "price": 13.50,
-             "type": "Appetizers"
+             "Roll_No": 10721723801,
+             "Candidate_Name": "VANSHIKA GARG",
+             "Result": 1869,
+             "Position": 1
          }
      ]
-     var c = 10;
-     const collection1 = firestore.collection("menu/test/testing");
-     menu.forEach(function(obj) {
+     var c = 0;
+     results.forEach(function(obj) {
          c += 1;
-         collection1.doc(String(c)).set({
-                 //  id: obj.id,
-                 name: obj.name,
-                 description: obj.description,
-                 price: obj.price,
-                 type: obj.type
+         collect.doc(String(c)).set({
+                 "RollNo": obj.Roll_No,
+                 "Name": obj.Candidate_Name,
+                 "Result": obj.Result,
+                 "Position": obj.Position
              }).then(function(docRef) {
                  console.log("Document written with ID: ", docRef.id);
              })
              .catch(function(error) {
                  console.error("Error adding document: ", error);
              });
-     });
+     })
  }
 
  function bulkdata() {
