@@ -37,6 +37,17 @@
 
     <title>Add Data</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // function addData() {
+    //     //  const collect = firestore.collection(String(document.getElementById("collect_path").value.trim()));
+    //     const docFile = document.getElementById("doc_file").value;
+    //     $.getJSON(docFile, function(obj) {
+    //         console.log("wala");
+    //     })
+    //     console.log(docFile);
+    // }
+</script>
 
 <body>
     <div class="m-auto p-4 pop-up">
@@ -44,7 +55,8 @@
             <p>Collection Path
                 <input class="exp-w" type="text" name="student" id="collect_path" required></p>
             <p>json text
-                <input class="exp-w" type="text" name="rollno" id="t_json" required></p>
+                <textarea id="t_json" class="form-control" rows="10" spellcheck="false"></textarea>
+            </p>
             <p>json file
                 <input class="exp-w" style="border: 1px solid black" type="file" name="marks" id="doc_file" required></p>
             <br>

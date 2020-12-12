@@ -17,37 +17,26 @@
  var firestore = firebase.firestore();
 
  function addData() {
-     const collectPath = document.getElementById("collect_path").value.trim();
+     //  const collect = firestore.collection(String(document.getElementById("collect_path").value.trim()));
      const docFile = document.getElementById("doc_file").value;
-     const collect = firestore.collection(String(collectPath));
-     var results = [{
-             "Roll_No": 10721604472,
-             "Candidate_Name": "ABHISHEK GILL",
-             "Result": "RL(Lower)",
-             "Position": "NA"
-         },
-         {
-             "Roll_No": 10721723801,
-             "Candidate_Name": "VANSHIKA GARG",
-             "Result": 1869,
-             "Position": 1
-         }
-     ]
-     var c = 0;
-     results.forEach(function(obj) {
-         c += 1;
-         collect.doc(String(c)).set({
-                 "RollNo": obj.Roll_No,
-                 "Name": obj.Candidate_Name,
-                 "Result": obj.Result,
-                 "Position": obj.Position
-             }).then(function(docRef) {
-                 console.log("Document written with ID: ", docRef.id);
-             })
-             .catch(function(error) {
-                 console.error("Error adding document: ", error);
-             });
-     })
+     console.log(docFile);
+     //  $.getJSON("testfile.json", function(obj) {
+     //      var c = 0;
+     //      for (i = 0; i < obj.length; i++) {
+     //          c += 1;
+     //          collect.doc(String(c)).set({
+     //                  "RollNo": obj[i].Roll_No,
+     //                  "Name": obj[i].Candidate_Name,
+     //                  "Result": obj[i].Result,
+     //                  "Position": obj[i].Position
+     //              }).then(function(docRef) {
+     //                  console.log("Document written with ID: ", docRef.id);
+     //              })
+     //              .catch(function(error) {
+     //                  console.error("Error adding document: ", error);
+     //              });
+     //      }
+     //  });
  }
 
  function bulkdata() {
