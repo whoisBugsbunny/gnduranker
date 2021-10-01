@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script> -->
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <!-- bootstrap js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+    <!-- custom css and js -->
+    <link rel="stylesheet" href="gnduranker.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="index.js"></script>
+    <!-- <script src="admin.js"></script> -->
+
+    <!-- browser icon -->
+    <link rel="icon" href="icon/r1logo2tneg.png">
+
+    <title>Gndu Ranker</title>
+</head>
+
+<body _ngcontent-bcy-c2 class="nav-groups-container">
+    <!-- loading full screen  -->
+
+    <!-- <div id="loading" class="f-load exp-h exp-w">
+        <div class="container m-auto p-4 text-center">
+            <div class="display-4">
+                <img class="f-load-img" src="images/loading.png">
+            </div>Loading
+        </div>
+    </div> -->
+    <div id="login" class="exp-h exp-w login-box-back d-none">
+        <div class="container exp-h mt-4">
+            <div class="cross-btn-bg py-4 my-4">
+                <button type="button" class="cross-btn" aria-label="Close" onclick="document.getElementById('login').classList.add('d-none')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="login-box exp-h bg-light m-auto py-3 px-4">
+                <h1 class="text-center"><img class="login-profile-icon" src="images/circle-user-icon-blue.png"></h1>
+                <p class="mb-1 ml-2"> Email</p>
+                <div class="mb-4">
+                    <input class="py-2 exp-w input-box" placeholder="enter email" id="email" type="email">
+                </div>
+                <p class="mb-1 ml-2"> Password</p>
+                <div class="mb-4">
+                    <input class="py-2 exp-w input-box" placeholder="enter password" id="password" type="password">
+                </div>
+                <div class="mb-2 text-center">
+                    <button class="btn mb-2 sl-btn log-btn" id="login" onclick="login()" type="submit">Log in</button>
+                    <button class="btn mb-2 sl-btn sign-btn" id="signup" onclick="signup()" type="submit">Sign up</button>
+                </div>
+                <hr class="mb-1">
+                <p class="text-center" style="margin: 0; font-size: small;top: -14px;position: relative;">OR</p>
+                <div class="mb3 text-center">
+                    <button type="submit" onclick="googleSignup()" class="btn mb-2 px-3 sl-btn-social"><img class="sl-btn-logo" src="icon/PinClipart-google.png"> Google</button>
+                    <button type="submit" onclick="facebookSignup()" class="btn mb-2 px-3 sl-btn-social"><img class="sl-btn-logo" src="icon/PinClipart-facebook.png"> facebook</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- welcome box -->
+    <div id="greeting" class="f-load exp-h exp-w d-none">
+        <div class="m-auto p-4 text-center pop-up">
+            <div class="pop-up-bg p-3">
+                <h1 id="gr_msg" class="display-4">Welcome</h1>
+                <p class="lead">
+                    hello, <span id="user_name"></span>
+                </p>
+                <button class="btn btn-outline-dark px-4" onclick="document.getElementById('greeting').classList.add('d-none')">OK</button>
+            </div>
+        </div>
+    </div>
+    <header class="nav-custom bg-banner-p">
+        <nav class="navbar navbar-expand-md ml-4 mr-4 navbar-dark" style="background-color: #00000000;">
+            <a class="navbar-brand dec-none font2" href="#"><img style="width: 50px;" src="icon/r1logo2tneg.png"></a>
+            <!-- <a class="navbar-brand nav-dec-none text-dark" style="font-weight: bold;" href="#">GNDU<span style="color: #4285F4;">r</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a> -->
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link nav-clicked" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">about</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">rank</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">college</a>
+                            <a class="dropdown-item" href="#">univercity</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="profile-icon" src="images/circle-user-icon-blue.png"></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownId">
+                            <a name="nologele" class="dropdown-item d-none" style="cursor: pointer;" onclick="document.getElementById('login').classList.remove('d-none')">login</a>
+                            <a name="loginele" class="dropdown-item d-none" href="myprofile.html">my profile</a>
+                            <a name="loginele" class="dropdown-item d-none" href="#">settings</a>
+                            <div name="loginele" class="dropdown-divider d-none"></div>
+                            <a name="loginele" class="dropdown-item d-none" href="#" onclick="logout()">logout</a>
+                            <p name="loading" style="cursor: default;" class="m-0 px-4 py-1">loading...</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="banner" class="bg-banner-p">
+        <div class="container-fluid" style="position: relative;min-height: 260px;">
+            <div class="banner-top">
+                <div class="container exp-h py-4 text-center">
+                    <div class="form-inline my-2 my-lg-0">
+                        <div id="search-bar" class="input-group exp-w">
+                            <input class="form-control search-box" id="searchMe-bar" type="search" placeholder="Check my Rank by roll no." aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn search-btn px-4" onclick="search_me()" type="submit">GO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sResult" class="my-4 d-none">
+                        <!-- <img style="width: 100px;" src="icon/ffrank logo.png"> -->
+                        <table class="table table-striped table-inverse bg-light d-table">
+
+                            <thead class="thead-inverse">
+                                <p id="myrank" class="text-light lead">#rank</p>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Roll No</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="usname"></td>
+                                    <td id="usroll"></td>
+                                    <td id="usmarks"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <p id="bannertext" class="font2 banner text-center banner-m-text-p">Rank</p>
+
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="navbar-brand nav-dec-none font2" href="#">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></a>
+    </div>
+
+    <!-- table -->
+
+    <div class="container" style="overflow: scroll;overflow-y: hidden;">
+        <table class="table table-striped table-inverse table-responsive cus-table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Pos.</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+            </tbody>
+        </table>
+        <!-- if auto load not work -->
+        <!-- <button onclick="load()" type="submit">load</button> -->
+    </div>
+
+
+    <!-- footer -->
+
+    <footer>
+        <div class="bg-m-black mt-4 p-4">
+            <div class="container text-light">
+                <div class="row">
+                    <span class="footer-col px-4">GNDU<span style="color: #4285F4;">R</span><span style="color: #EA4335;">a</span><span style="color: #FBBC03;">n</span><span style="color: #34A853;">k</span></span>
+                    <a class="nav-link px-4 text-light" href="#">developers</a>
+                    <a class="nav-link px-4 text-light" href="#">feedback</a>
+                </div>
+                <br>
+                <div class="row text-center">
+                    <p class="exp-w">These ranking are based on your academics. This does'nt prove your skill on your intrust @gnduranker</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
