@@ -1,0 +1,11 @@
+{
+    "hosting": {
+        "site": "gnduranker",
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}
